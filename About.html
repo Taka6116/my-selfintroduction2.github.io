@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>後藤 孝 | About</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ================= Reset & Base ================= */
+        * { margin:0; padding:0; box-sizing:border-box; }
+        :root {
+            --primary-color: #1a2332;
+            --secondary-color: #2c7a7b;
+            --accent-color: #d4af37;
+            --bg-light: #f7fafc;
+            --bg-white: #ffffff;
+            --text-dark: #2d3748;
+            --text-light: #718096;
+            --border-color: #e2e8f0;
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 25px rgba(0,0,0,0.15);
+            --transition: all 0.3s ease;
+        }
+        html { scroll-behavior: smooth; font-size:16px; }
+        body { font-family:'Noto Sans JP','Montserrat',sans-serif; color:var(--text-dark); line-height:1.7; background-color:var(--bg-light); }
+        .container { max-width:1200px; margin:0 auto; padding:0 2rem; }
+
+        /* ================= Navigation ================= */
+        .navbar { position: fixed; top:0; left:0; right:0; background-color: rgba(26, 35, 50, 0.95); backdrop-filter: blur(10px); z-index:1000; padding:1rem 0; box-shadow: var(--shadow-sm); }
+        .navbar .container { display:flex; justify-content:space-between; align-items:center; }
+        .nav-brand { font-size:1.5rem; font-weight:700; color:var(--accent-color); letter-spacing:2px; }
+        .nav-menu { display:flex; list-style:none; gap:2rem; }
+        .nav-link { color:#fff; text-decoration:none; font-weight:500; font-size:0.95rem; position:relative; transition:var(--transition); padding:0.5rem 0; }
+        .nav-link::after { content:''; position:absolute; bottom:0; left:0; width:0; height:2px; background-color:var(--accent-color); transition:width 0.3s ease; }
+        .nav-link:hover::after, .nav-link.active::after { width:100%; }
+        .nav-link:hover, .nav-link.active { color:var(--accent-color); }
+        .hamburger { display:none; flex-direction:column; cursor:pointer; gap:5px; }
+        .hamburger span { width:25px; height:3px; background-color:#fff; transition:var(--transition); }
+
+        /* ================= About Section ================= */
+        /* min-heightを調整し、padding-topをnavbarの高さ+αに設定してコンテンツが隠れないように修正 */
+        .section { padding:8rem 0 6rem; min-height:calc(100vh - 2rem); display:flex; align-items:center; }
+        .section-title { font-size:3rem; font-weight:700; text-align:center; margin-bottom:4rem; color:var(--primary-color); position:relative; font-family:'Montserrat',sans-serif; }
+        .section-title::after { content:''; position:absolute; bottom:-15px; left:50%; transform:translateX(-50%); width:80px; height:4px; background:linear-gradient(90deg,var(--secondary-color),var(--accent-color)); border-radius:2px; }
+
+        .about-section { background-color: var(--bg-white); }
+        .about-content { display:flex; flex-direction:column; gap:3rem; }
+        .about-card { background: linear-gradient(135deg,var(--primary-color),var(--secondary-color)); padding:2.5rem; border-radius:20px; box-shadow:var(--shadow-lg); color:#fff; }
+        .about-info { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:1.5rem; }
+        .info-item { display:flex; flex-direction:column; gap:0.5rem; }
+        .info-label { font-size:0.9rem; color:var(--accent-color); font-weight:600; text-transform:uppercase; letter-spacing:1px; }
+        .info-value { font-size:1.2rem; font-weight:500; }
+
+        .about-story { background-color: var(--bg-light); padding:2.5rem; border-radius:20px; border-left:4px solid var(--accent-color); }
+        .subsection-title { font-size:1.8rem; font-weight:600; margin-bottom:1.5rem; color:var(--primary-color); }
+        .story-text { margin-bottom:1.5rem; color:var(--text-dark); line-height:1.9; }
+        .story-text:last-child { margin-bottom:0; }
+
+        .skills-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:2rem; }
+        .skill-card { background-color:var(--bg-white); padding:2rem; border-radius:15px; box-shadow:var(--shadow-md); transition:var(--transition); border-top:3px solid var(--accent-color); }
+        .skill-card:hover { transform:translateY(-10px); box-shadow:var(--shadow-lg); }
+        .skill-icon { font-size:3rem; margin-bottom:1rem; }
+        .skill-title { font-size:1.4rem; font-weight:600; margin-bottom:1rem; color:var(--primary-color); }
+        .skill-description { color:var(--text-light); line-height:1.7; }
+
+        /* ================= Animations ================= */
+        @keyframes fadeInUp { from {opacity:0; transform:translateY(30px);} to {opacity:1; transform:translateY(0);} }
+        /* 初期状態を非表示に設定 */
+        .fade-in-up { opacity:0; transform:translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
+        /* visibleクラスが付与されたら表示 */
+        .fade-in-up.visible { opacity:1; transform:translateY(0); }
+
+        /* ================= Responsive ================= */
+        @media(max-width:768px){
+            .container { padding:0 1.5rem; }
+            .nav-menu { position:fixed; left:-100%; top:70px; flex-direction:column; background-color:var(--primary-color); width:100%; text-align:center; transition:0.3s; padding:2rem 0; }
+            .nav-menu.active { left:0; }
+            .hamburger { display:flex; }
+            .hamburger.active span:nth-child(1){ transform:rotate(45deg) translate(8px,8px); }
+            .hamburger.active span:nth-child(2){ opacity:0; }
+            .hamburger.active span:nth-child(3){ transform:rotate(-45deg) translate(7px,-7px); }
+            .skills-grid { grid-template-columns:1fr; }
+            .about-info { grid-template-columns:1fr; }
+            /* スマホでのコンテンツ上部の余白を調整 */
+            .section { padding-top: 6rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-brand">TG</div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link active">About</a></li>
+                <li><a href="career.html" class="nav-link">Career</a></li>
+                <li><a href="vision.html" class="nav-link">Vision</a></li>
+                </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+        <section id="about" class="section about-section">
+        <div class="container">
+            <h2 class="section-title fade-in-up">About Me</h2>
+            <div class="about-content">
+                <div class="about-card fade-in-up">
+                    <div class="about-info">
+                        <div class="info-item">
+                            <span class="info-label">名前</span>
+                            <span class="info-value">後藤 孝 (Takashi Goto)</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">年齢</span>
+                            <span class="info-value">31歳</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">生年月日</span>
+                            <span class="info-value">1994年1月16日</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">出身</span>
+                            <span class="info-value">兵庫県生まれ、埼玉育ち</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="about-story fade-in-up">
+                    <h3 class="subsection-title">My Story</h3>
+                    <p class="story-text">
+                        兵庫県生まれ、埼玉で育ち。サッカーに13年間を費やし学生時代のエネルギー、リソースはサッカーに注ぎ込みました。大学1年生の冬まで現役選手としてプレーし、プロ選手との対戦経験も持っています。
+                    </p>
+                    <p class="story-text">
+                        大学を一年休学し、都内の英語学校に通い、大学に戻り卒業後はフィリピンとカナダに留学をしました。
+                    </p>
+                    <p class="story-text">
+                        読書、トレーニング、漫画、サッカーが好きです。
+                    </p>
+                </div>
+
+                <div class="skills-grid fade-in-up">
+                    <div class="skill-card">
+                        <div class="skill-icon">🌐</div>
+                        <h4 class="skill-title">英語力</h4>
+                        <p class="skill-description">
+                            英検一級　TOEIC 940 Versant 61
+                        </p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon">📊</div>
+                        <h4 class="skill-title">分析力</h4>
+                        <p class="skill-description">
+                            広告運用、ソーシャルリスニング、リサーチ業務の経験
+                        </p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon">🔍</div>
+                        <h4 class="skill-title">探究心</h4>
+                        <p class="skill-description">
+                            常に新しい知識とスキルを追求し、変化する市場環境に適応し続ける姿勢
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('nav-menu');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const faders = document.querySelectorAll('.fade-in-up');
+
+            // --- 1. ハンバーガーメニューのトグル機能 ---
+            if (hamburger && navMenu) {
+                hamburger.addEventListener('click', () => {
+                    navMenu.classList.toggle('active');
+                    hamburger.classList.toggle('active');
+                });
+            }
+
+            // メニューリンククリックでメニューを閉じる
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (navMenu.classList.contains('active')) {
+                        navMenu.classList.remove('active');
+                        hamburger.classList.remove('active');
+                    }
+                });
+            });
+
+            // --- 2. スクロールアニメーション機能 (Intersection Observer) ---
+            const appearOptions = {
+                threshold: 0.1, // 要素の10%が見えたら発火
+                rootMargin: "0px 0px -100px 0px" // ビューポートの下から100px手前で発火
+            };
+
+            const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) {
+                        return;
+                    } else {
+                        entry.target.classList.add('visible');
+                        appearOnScroll.unobserve(entry.target); // 一度表示されたら監視を停止
+                    }
+                });
+            }, appearOptions);
+
+            faders.forEach(fader => {
+                appearOnScroll.observe(fader);
+            });
+        });
+    </script>
+</body>
+</html>

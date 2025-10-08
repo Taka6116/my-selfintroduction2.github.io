@@ -1,0 +1,366 @@
+```html
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Section</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+/* ========================================
+   Reset & Base
+   ======================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root {
+    --primary-color: #1a2332;
+    --secondary-color: #2c7a7b;
+    --accent-color: #d4af37;
+    --bg-light: #f7fafc;
+    --bg-white: #ffffff;
+    --text-dark: #2d3748;
+    --border-color: #e2e8f0;
+    --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+    --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+    --shadow-lg: 0 10px 25px rgba(0,0,0,0.15);
+    --transition: all 0.3s ease;
+}
+body {
+    font-family: 'Noto Sans JP','Montserrat',sans-serif;
+    color: var(--text-dark);
+    line-height: 1.7;
+    background-color: var(--bg-light);
+}
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* ========================================
+   Navigation（常に表示）
+   ======================================== */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(26, 35, 50, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    padding: 1rem 0;
+    box-shadow: var(--shadow-sm);
+}
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.nav-brand {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    letter-spacing: 2px;
+}
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+.nav-link {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    position: relative;
+    transition: var(--transition);
+    padding: 0.5rem 0;
+}
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--accent-color);
+    transition: width 0.3s ease;
+}
+.nav-link:hover::after, .nav-link.active::after {
+    width: 100%;
+}
+.nav-link:hover, .nav-link.active {
+    color: var(--accent-color);
+}
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+}
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    transition: var(--transition);
+}
+
+/* ========================================
+   Section Title
+   ======================================== */
+.section-title {
+    font-size: 3rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 4rem;
+    color: var(--primary-color);
+    position: relative;
+    font-family: 'Montserrat', sans-serif;
+}
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+    border-radius: 2px;
+}
+
+/* ========================================
+   Career Section
+   ======================================== */
+.career-section {
+    padding: 8rem 0 6rem; /* navbar分を上に空ける */
+    min-height: 100vh;
+    background-color: var(--bg-light);
+}
+
+.timeline {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    padding-left: 2rem;
+}
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(180deg, var(--secondary-color), var(--accent-color));
+}
+.timeline-item {
+    position: relative;
+    margin-bottom: 3rem;
+    padding-left: 3rem;
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.timeline-marker {
+    position: absolute;
+    left: -9px;
+    top: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: var(--accent-color);
+    border: 3px solid var(--bg-light);
+    box-shadow: 0 0 0 4px var(--secondary-color);
+}
+.timeline-content {
+    background-color: var(--bg-white);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: var(--shadow-md);
+    transition: var(--transition);
+}
+.timeline-content:hover {
+    transform: translateX(10px);
+    box-shadow: var(--shadow-lg);
+}
+.timeline-date {
+    color: var(--accent-color);
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+}
+.timeline-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+.timeline-description {
+    color: var(--text-dark);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+.timeline-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+.tag {
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    background-color: var(--bg-light);
+    color: var(--secondary-color);
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border: 1px solid var(--border-color);
+}
+
+/* ========================================
+   Responsive
+   ======================================== */
+@media(max-width:768px){
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 70px;
+        flex-direction: column;
+        background-color: var(--primary-color);
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        padding: 2rem 0;
+    }
+    .nav-menu.active { left: 0; }
+    .hamburger { display: flex; }
+    .hamburger.active span:nth-child(1){ transform: rotate(45deg) translate(8px,8px); }
+    .hamburger.active span:nth-child(2){ opacity: 0; }
+    .hamburger.active span:nth-child(3){ transform: rotate(-45deg) translate(7px,-7px); }
+    .timeline { padding-left: 1.5rem; }
+    .timeline-item { padding-left: 2rem; }
+}
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-brand">TG</div>
+            <ul class="nav-menu" id="nav-menu">
+               <li><a href="index.html" class="nav-link">Home</a></li>
+               <li><a href="about.html" class="nav-link">About</a></li>
+               <li><a href="career.html" class="nav-link active">Career</a></li>
+               <li><a href="vision.html" class="nav-link">Vision</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Career Section -->
+    <section id="career" class="section career-section">
+        <div class="container">
+            <h2 class="section-title fade-in-up">Career Journey</h2> 
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">現在</div>
+                        <h3 class="timeline-title">セルミュラー株式会社</h3>
+                        <p class="timeline-description">
+                            2025年10月1日 セルミュラー株式会社に入社。研修量に圧倒されている。関数きつい。
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">リサーチ会社時代</div>
+                        <h3 class="timeline-title">マーケティングリサーチ会社</h3>
+                        <p class="timeline-description">
+                            アカウントマネージャーとして、広告効果検証ツールやメディア視聴率データなどを通して国内外のクライアントをサポート。
+                        </p>
+                        <div class="timeline-tags">
+                            <span class="tag">法人営業</span>
+                            <span class="tag">データ分析</span>
+                            <span class="tag">プレゼン</span>
+                            <span class="tag">クライアント折衝</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">代理店時代</div>
+                        <h3 class="timeline-title">広告代理店3社 | デジタルマーケティング</h3>
+                        <p class="timeline-description">
+                            広告運用、プランニング、ソーシャルリスニングを担当。Dockpit, digiads, sprinklr など使用。
+                        </p>
+                        <div class="timeline-tags">
+                            <span class="tag">広告運用</span>
+                            <span class="tag">プランニング</span>
+                            <span class="tag">ソーシャルリスニング</span>
+                            <span class="tag">データ分析</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">キャリア初期</div>
+                        <h3 class="timeline-title">英会話スクール | コーチング・講師</h3>
+                        <p class="timeline-description">
+                            約200人の英語学習をサポート。個々の目標に合わせたプランを提供し、多くの生徒が目標を達成。
+                        </p>
+                        <div class="timeline-tags">
+                            <span class="tag">英語教育</span>
+                            <span class="tag">コーチング</span>
+                            <span class="tag">カスタマーサポート</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+/* =========================
+   Navbar & Animation JS
+   ========================= */
+const hamburger = document.getElementById('hamburger');
+const navMenu = document.getElementById('nav-menu');
+hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navMenu.classList.toggle('active');
+});
+
+// Timeline fade-in animation
+const timelineItems = document.querySelectorAll('.timeline-item');
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+            setTimeout(() => {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateX(0)';
+            }, index * 150);
+            observer.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.2 });
+
+timelineItems.forEach(item => observer.observe(item));
+    </script>
+</body>
+</html>
+```

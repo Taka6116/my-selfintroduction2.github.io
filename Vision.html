@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>後藤 孝 | Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ======================================== Global & Base Styles ======================================== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary-color: #1a2332;
+            --secondary-color: #2c7a7b;
+            --accent-color: #d4af37;
+            --bg-light: #f7fafc;
+            --bg-white: #ffffff;
+            --text-dark: #2d3748;
+            --text-light: #718096;
+            --border-color: #e2e8f0;
+            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
+            --transition: all 0.3s ease;
+        }
+        html { scroll-behavior: smooth; font-size: 16px; }
+        body { 
+            font-family: 'Noto Sans JP', 'Montserrat', sans-serif; 
+            color: var(--text-dark); 
+            line-height: 1.7; 
+            overflow-x: hidden; 
+            background-color: var(--bg-light); 
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+
+        /* ======================================== Navigation Styles ======================================== */
+        .navbar { 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            right: 0; 
+            background-color: rgba(26, 35, 50, 0.95); 
+            backdrop-filter: blur(10px); 
+            z-index: 1000; 
+            padding: 1rem 0; 
+            box-shadow: var(--shadow-sm); 
+        }
+        .navbar .container { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+        .nav-brand { 
+            font-size: 1.5rem; 
+            font-weight: 700; 
+            color: var(--accent-color); 
+            font-family: 'Montserrat', sans-serif; 
+            letter-spacing: 2px; 
+        }
+        .nav-menu { 
+            display: flex; 
+            list-style: none; 
+            gap: 2rem; 
+        }
+        /* activeクラスをこのページ(vision.html)に合わせて修正 */
+        .nav-menu li:nth-child(4) a { /* Visionリンク */
+             color: var(--accent-color);
+        }
+        .nav-link { 
+            color: #ffffff; 
+            text-decoration: none; 
+            font-weight: 500; 
+            font-size: 0.95rem; 
+            position: relative; 
+            transition: var(--transition); 
+            padding: 0.5rem 0; 
+        }
+        /* Homeリンクはデフォルトではアクティブにしない */
+        .nav-menu li:nth-child(1) a.active {
+            color: #ffffff; /* activeクラスをVisionに移すため */
+        }
+        /* Visionリンクに.activeクラスを追加 */
+        .nav-menu li:nth-child(4) a.nav-link {
+            color: var(--accent-color);
+        }
+        .nav-link::after { 
+            content: ''; 
+            position: absolute; 
+            bottom: 0; 
+            left: 0; 
+            width: 0; 
+            height: 2px; 
+            background-color: var(--accent-color); 
+            transition: width 0.3s ease; 
+        }
+        .nav-link:hover::after, 
+        .nav-menu li:nth-child(4) a.nav-link::after { /* Visionページでのアクティブ表示 */
+            width: 100%; 
+        }
+        .nav-link:hover { 
+            color: var(--accent-color); 
+        }
+        .hamburger { 
+            display: none; 
+            flex-direction: column; 
+            cursor: pointer; 
+            gap: 5px; 
+        }
+        .hamburger span { 
+            width: 25px; 
+            height: 3px; 
+            background-color: #ffffff; 
+            transition: var(--transition); 
+        }
+
+        /* ======================================== Section Base Styles ======================================== */
+        .section { 
+            padding: 8rem 0 6rem; /* ナビゲーションバーの分、上部を広く取る */
+            min-height: 100vh; 
+            display: flex; 
+            align-items: center; 
+        }
+        .section-title { 
+            font-size: 3rem; 
+            font-weight: 700; 
+            text-align: center; 
+            margin-bottom: 4rem; 
+            color: var(--primary-color); 
+            position: relative; 
+            font-family: 'Montserrat', sans-serif; 
+        }
+        .section-title::after { 
+            content: ''; 
+            position: absolute; 
+            bottom: -15px; 
+            left: 50%; 
+            transform: translateX(-50%); 
+            width: 80px; 
+            height: 4px; 
+            background: linear-gradient(90deg, var(--secondary-color), var(--accent-color)); 
+            border-radius: 2px; 
+        }
+
+        /* ======================================== Vision Section Styles ======================================== */
+        .vision-section {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: #ffffff;
+        }
+        .vision-section .section-title {
+            color: #ffffff;
+        }
+        .vision-section .section-title::after {
+            background: var(--accent-color);
+        }
+        .vision-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .vision-statement {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .vision-quote {
+            font-size: 2.5rem;
+            font-weight: 600;
+            line-height: 1.5;
+            color: var(--accent-color);
+            margin-bottom: 2rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .vision-description {
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2.5rem;
+            border-radius: 20px;
+            margin-bottom: 3rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .vision-text {
+            margin-bottom: 1.5rem;
+            line-height: 1.9;
+            font-size: 1.05rem;
+        }
+        .vision-text:last-child {
+            margin-bottom: 0;
+        }
+        .vision-goals-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--accent-color);
+            text-align: center;
+            margin-bottom: 1.5rem;
+            margin-top: 1rem;
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 1px;
+        }
+        .vision-pillars {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        .pillar {
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: var(--transition);
+        }
+        .pillar:hover {
+            transform: translateY(-10px);
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+        .pillar-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .pillar-list {
+            list-style: none;
+            padding-left: 0;
+            margin: 0;
+        }
+        .pillar-list li {
+            position: relative;
+            padding-left: 1.2rem;
+            margin-bottom: 0.7rem;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.05rem;
+        }
+        .pillar-list li::before {
+            content: '・';
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        /* ======================================== Animations ======================================== */
+        @keyframes fadeInUp { 
+            from { opacity: 0; transform: translateY(30px); } 
+            to { opacity: 1; transform: translateY(0); } 
+        }
+        .fade-in-up { 
+            opacity: 0; 
+            transform: translateY(30px); 
+            transition: opacity 0.8s ease, transform 0.8s ease; 
+        }
+        .fade-in-up.visible { 
+            opacity: 1; 
+            transform: translateY(0); 
+        }
+
+        /* ======================================== Responsive Design ======================================== */
+        @media (max-width: 768px) {
+            .container { padding: 0 1.5rem; }
+            /* ナビゲーションメニューの表示位置を調整 */
+            .nav-menu { 
+                position: fixed; 
+                left: -100%; 
+                top: 70px; /* navbarの高さに合わせて調整 */
+                flex-direction: column; 
+                background-color: var(--primary-color); 
+                width: 100%; 
+                text-align: center; 
+                transition: 0.3s; 
+                box-shadow: var(--shadow-lg); 
+                padding: 2rem 0; 
+            }
+            .nav-menu.active { left: 0; }
+            .hamburger { display: flex; }
+            .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(8px, 8px); }
+            .hamburger.active span:nth-child(2) { opacity: 0; }
+            .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -7px); }
+            
+            .section { padding-top: 6rem; } /* モバイル時の上部余白調整 */
+            .section-title { font-size: 2rem; margin-bottom: 2.5rem; }
+            .vision-quote { font-size: 1.8rem; }
+            .vision-pillars { grid-template-columns: 1fr; }
+            .vision-goals-title { font-size: 1.3rem; margin-bottom: 1rem; }
+        }
+        @media (max-width: 480px) {
+            .vision-quote { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-brand">TG</div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="career.html" class="nav-link">Career</a></li>
+                <li><a href="vision.html" class="nav-link active">Vision</a></li>
+                </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+    
+    <section id="vision" class="section vision-section">
+        <div class="container">
+            <div class="vision-content fade-in-up"> 
+                <h2 class="section-title">My Vision</h2>
+                <div class="vision-statement">
+                    <p class="vision-quote">
+                        「言語や文化を超えて<br>価値を届けられる状態にしたい」
+                    </p>
+                </div>
+                <div class="vision-description">
+                    <p class="vision-text">
+                        持ち前の英語力とこれまでの経験に加え、セルミュラー幅広く知識と経験を積み、分野に制限されることなくクライアントに価値を提供し続けられる「状態」にしたい。
+                    </p>
+                </div>
+                <h3 class="vision-goals-title">目標</h3>
+                <div class="vision-pillars">
+                    <div class="pillar">
+                        <div class="pillar-number">1年</div>
+                        <ul class="pillar-list">
+                            <li>コーディングの構造を理解</li>
+                            <li>プロジェクトのフルサイクル経験（企画〜実装〜改善まで）</li>
+                            <li>データ分析の基礎を習得（Google Analytics等）</li>
+                        </ul>
+                    </div>
+                    <div class="pillar">
+                        <div class="pillar-number">3年</div>
+                        <ul class="pillar-list">
+                            <li>チームやプロジェクトの中心人物として牽引できる状態</li>
+                        </ul>
+                    </div>
+                    <div class="pillar">
+                        <div class="pillar-number">5~10年</div>
+                        <ul class="pillar-list">
+                            <li>クライアントから全面的に信頼されるコンサルタントになる</li>
+                            <li>業界横断のマーケティング知見を持ち、事業成長を牽引できる存在</li>
+                            <li>異文化・多言語の橋渡し役として価値提供</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('nav-menu');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const fadeElements = document.querySelectorAll('.fade-in-up');
+
+            // --- 1. ハンバーガーメニューのトグル機能 ---
+            if (hamburger && navMenu) {
+                hamburger.addEventListener('click', () => {
+                    navMenu.classList.toggle('active');
+                    hamburger.classList.toggle('active');
+                });
+            }
+
+            // メニューリンククリックでメニューを閉じる
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (navMenu.classList.contains('active')) {
+                        navMenu.classList.remove('active');
+                        hamburger.classList.remove('active');
+                    }
+                });
+            });
+
+            // --- 2. スクロールアニメーション機能 (Intersection Observer) ---
+            const fadeObserverOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1 
+            };
+
+            const fadeObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.classList.add('visible');
+                        }, index * 100); 
+                        fadeObserver.unobserve(entry.target); 
+                    }
+                });
+            }, fadeObserverOptions);
+
+            fadeElements.forEach(element => {
+                fadeObserver.observe(element); 
+            });
+        });
+    </script>
+</body>
+</html>
