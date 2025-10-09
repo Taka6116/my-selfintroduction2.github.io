@@ -51,7 +51,8 @@ const sectionObserver = new IntersectionObserver((entries) => {
             });
             
             // Add active class to current section link
-            const activeLink = document.querySelector(`.nav-link[href="#${sectionId}"]`);
+            // メモ：index.html以外のページでは"#home"などがないため、エラーを防ぐために存在チェックを入れる
+            const activeLink = document.querySelector(`.nav-link[href*="${sectionId}"]`);
             if (activeLink) {
                 activeLink.classList.add('active');
             }
@@ -72,7 +73,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         const target = document.querySelector(this.getAttribute('href'));
         
         if (target) {
-            const offsetTop = target.offsetTop - 70;
+            const offsetTop = target.offsetTop - 70; // 70pxはナビゲーションバーの高さ
             window.scrollTo({
                 top: offsetTop,
                 behavior: 'smooth'
@@ -110,9 +111,10 @@ fadeElements.forEach(element => {
 // ========================================
 // Contact Form
 // ========================================
+// メモ: このフォームは現在HTMLに存在しないため、エラー回避のために存在チェックを行う
 const contactForm = document.getElementById('contact-form');
 
-if (contactForm) { // contactFormが存在する場合のみイベントリスナーを追加
+if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
         e.preventDefault();
         
@@ -150,6 +152,7 @@ window.addEventListener('scroll', () => {
 // ========================================
 // Dynamic Year in Footer
 // ========================================
+// メモ: この要素は現在HTMLに存在しないため、エラー回避のために存在チェックを行う
 const footerText = document.querySelector('.footer-text');
 if (footerText) {
     const currentYear = new Date().getFullYear();
@@ -210,19 +213,19 @@ window.addEventListener('load', () => {
     }, 100);
 });
 
-console.log('🚀 Website loaded successfully!');
-console.log('👨‍💼 Takashi Goto Portfolio');
-console.log('🌐 Bridging Cultures, Delivering Value');
-
 // ========================================
-// Image Slider (追加)
+// Image Slider 
 // ========================================
 const sliderTrack = document.getElementById('slider-track');
 if (sliderTrack) {
-    // スライダーアイテムを複製して無限ループを実現
+    // スライダーのアイテムを複製して無限ループを実現
     const slideItems = Array.from(sliderTrack.children);
     slideItems.forEach(item => {
         const clone = item.cloneNode(true);
         sliderTrack.appendChild(clone);
     });
 }
+
+console.log('🚀 Website loaded successfully!');
+console.log('👨‍💼 Takashi Goto Portfolio');
+console.log('🌐 Bridging Cultures, Delivering Value');
