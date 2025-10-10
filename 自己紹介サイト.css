@@ -307,6 +307,9 @@ body {
     border: none; /* ボーダーを削除 */
     cursor: pointer;
     font-size: 1rem;
+    /* 💥💥 ここを追加 💥💥 */
+    position: relative; 
+    overflow: hidden; /* ハートがボタンの境界を超えて飛び出すのを許可しない場合は追加 */
 }
 
 .like-btn:hover {
@@ -435,3 +438,41 @@ body {
     }
 }
 
+/* ========================================
+   Good Button Effect (Heart Burst)
+   ======================================== */
+
+/* ハートの基本スタイル */
+.like-btn::after {
+    content: '❤️'; /* 表示する絵文字 (ハート) */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+    font-size: 2rem; /* サイズ調整 */
+    pointer-events: none; /* クリックイベントを邪魔しないようにする */
+}
+
+/* クリック時 (clickedクラス追加時) に実行されるアニメーション */
+.like-btn.clicked::after {
+    animation: heart-burst 0.7s ease-out forwards;
+}
+
+/* ハートが飛び出し、消えるアニメーションのキーフレーム */
+@keyframes heart-burst {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0);
+        top: 50%;
+    }
+    30% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.2);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -150%) scale(0.5); /* 上に少し移動させる */
+        top: 0;
+    }
+}
