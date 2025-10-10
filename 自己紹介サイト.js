@@ -108,10 +108,27 @@ fadeElements.forEach(element => {
     fadeObserver.observe(element);
 });
 
+// --- Likeボタン機能 ---
+document.addEventListener("DOMContentLoaded", () => {
+    const likeButton = document.getElementById("like-button");
+    const likeCount = document.getElementById("like-count");
+    let count = 0;
+
+    likeButton.addEventListener("click", () => {
+        count++;
+        likeCount.textContent = count;
+        likeButton.style.backgroundColor = "#ffeb3b"; // 押したとき黄色に変化
+        setTimeout(() => {
+            likeButton.style.backgroundColor = "#f1f1f1";
+        }, 300);
+    });
+});
+
+
 // ========================================
 // Contact Form
 // ========================================
-// メモ: このフォームは現在HTMLに存在しないため、エラー回避のために存在チェックを行う
+// メモ: このフォームはHTMLに入れていない　今後のタメ残す
 const contactForm = document.getElementById('contact-form');
 
 if (contactForm) {
@@ -229,3 +246,4 @@ if (sliderTrack) {
 console.log('🚀 Website loaded successfully!');
 console.log('👨‍💼 Takashi Goto Portfolio');
 console.log('🌐 Bridging Cultures, Delivering Value');
+
