@@ -310,6 +310,7 @@ body {
     /* 💥💥 ここを追加 💥💥 */
     position: relative; 
     overflow: hidden; /* ハートがボタンの境界を超えて飛び出すのを許可しない場合は追加 */
+    z-index: 10; /* ボタンのテキストと背景をハートより手前に表示 */
 }
 
 .like-btn:hover {
@@ -324,6 +325,7 @@ body {
     color: var(--primary-color); /* 文字色はそのまま、または濃い色 */
     transform: scale(1.05);
     box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3); /* クリック後のシャドウも調整 */
+     z-index: 10; /* 念のため z-index を保持 */
 }
 
 .scroll-indicator {
@@ -476,3 +478,4 @@ body {
         top: 0;
     }
 }
+
