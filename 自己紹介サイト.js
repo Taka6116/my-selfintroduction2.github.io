@@ -228,21 +228,87 @@ if (sliderTrack) {
 }
 
 // ========================================
-// Good Button
+// Good Button（デバッグ機能付き）
 // ========================================
-const likeButton = document.getElementById('like-button');
+console.log('🔍 Good Button script loading...');
 
-if (likeButton) {
-    likeButton.addEventListener('click', () => {
-        // clicked クラスをトグル（追加/削除を切り替え）
-        likeButton.classList.toggle('clicked');
-    });
-}
+// DOMが完全に読み込まれてから実行
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('📄 DOM Content Loaded');
+    
+    const likeButton = document.getElementById('like-button');
+    console.log('🎯 Like button element:', likeButton);
+    
+    if (likeButton) {
+        console.log('✅ Like button found!');
+        console.log('🏷️ Current classes:', likeButton.className);
+        
+        likeButton.addEventListener('click', (e) => {
+            console.log('🖱️ Button clicked!');
+            console.log('📋 Before toggle classes:', likeButton.className);
+            
+            // clicked クラスをトグル（追加/削除を切り替え）
+            likeButton.classList.toggle('clicked');
+            
+            console.log('📋 After toggle classes:', likeButton.className);
+            console.log('🎨 Computed styles:', window.getComputedStyle(likeButton));
+            
+            // 視覚的な確認のために一時的にテキストも変更
+            if (likeButton.classList.contains('clicked')) {
+                likeButton.innerHTML = '❤️ Liked!';
+                console.log('💖 Button state: LIKED');
+            } else {
+                likeButton.innerHTML = '👍 Good';
+                console.log('👍 Button state: NORMAL');
+            }
+        });
+        
+        // ボタンにマウスオーバーしたときのデバッグ
+        likeButton.addEventListener('mouseenter', () => {
+            console.log('🖱️ Mouse entered button');
+        });
+        
+        likeButton.addEventListener('mouseleave', () => {
+            console.log('🖱️ Mouse left button');
+        });
+        
+    } else {
+        console.error('❌ Like button not found! Debugging...');
+        
+        // すべてのボタンを確認
+        const allButtons = document.querySelectorAll('button');
+        console.log('🔍 All buttons on page:', allButtons);
+        
+        // すべての要素にlike-buttonが含まれるかチェック
+        const allElements = document.querySelectorAll('*');
+        const elementsWithLikeButton = Array.from(allElements).filter(el => 
+            el.id === 'like-button' || 
+            el.classList.contains('like-button') || 
+            el.className.includes('like')
+        );
+        console.log('🔍 Elements with like-related attributes:', elementsWithLikeButton);
+        
+        // クラスでも検索してみる
+        const likeButtonByClass = document.querySelector('.like-btn');
+        console.log('🎯 Element by class .like-btn:', likeButtonByClass);
+        
+        if (likeButtonByClass) {
+            console.log('🔄 Found button by class, adding click handler...');
+            likeButtonByClass.addEventListener('click', () => {
+                likeButtonByClass.classList.toggle('clicked');
+                console.log('✅ Clicked via class selector!');
+            });
+        }
+    }
+});
+
+// 追加：ページ読み込み完了後にも再度チェック
+window.addEventListener('load', () => {
+    console.log('🌐 Window loaded, rechecking button...');
+    const likeButtonAgain = document.getElementById('like-button');
+    console.log('🔄 Like button after window load:', likeButtonAgain);
+});
 
 console.log('🚀 Website loaded successfully!');
 console.log('👨‍💼 Takashi Goto Portfolio');
 console.log('🌐 Bridging Cultures, Delivering Value');
-
-
-
-
