@@ -236,6 +236,53 @@ body {
     background-color: #e5c04a;
 }
 
+/* ========================================
+   Hero Section Buttons
+   ======================================== */
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem; /* ボタン間のスペース */
+    margin-top: 2.5rem; /* 説明文とのスペースを確保 */
+    animation: fadeInUp 1s ease 1.1s both; /* アニメーションを親要素に移動 */
+}
+
+.btn-primary {
+    animation: none; /* 個別のボタンのアニメーションは不要に */
+}
+
+.like-container {
+    display: flex;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 50px;
+    padding: 0.5rem 1rem;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+}
+
+.like-container:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+}
+
+.like-btn {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 1rem;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#like-count {
+    margin-left: 0.5rem;
+    font-weight: 700;
+    color: var(--secondary-color);
+    font-size: 1.1rem;
+}
 
 
 
@@ -318,5 +365,6 @@ body {
 .slide-item {
     flex-shrink: 0;
     width: 200
+
 
 
