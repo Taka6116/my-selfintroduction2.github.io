@@ -255,31 +255,37 @@ body {
 
 
 .like-btn {
-    background-color: transparent;
-    border: 2px solid rgba(255, 255, 255, 0.9);
-    color: #ffffff;
+    display: inline-block; /* インライン要素をブロック要素として扱えるようにする */
+    padding: 1rem 2.5rem;
+    background-color: var(--bg-white); /* 背景を白に変更 */
+    color: var(--primary-color); /* 文字色を濃い色に変更 */
+    text-decoration: none;
     font-weight: 600;
+    border-radius: 50px;
+    transition: var(--transition);
+    /* アニメーション関連のプロパティは削除または調整 */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* シャドウを調整 */
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 1px;
+    
+    /* 以前のlike-btnの残りの設定 */
+    border: none; /* ボーダーを削除 */
     cursor: pointer;
     font-size: 1rem;
-    font-family: 'Montserrat', sans-serif;
-    padding: 1rem 2.5rem;
-    border-radius: 50px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    transition: var(--transition);
 }
 
 .like-btn:hover {
     transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3);
-    border-color: #ffffff;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2); /* ホバー時のシャドウを調整 */
+    background-color: var(--bg-light); /* ホバー時の背景色を少し変える */
 }
 
 /* クリック後の状態 */
 .like-btn.clicked {
-    background-color: var(--accent-color);
-    border-color: var(--accent-color);
-    color: var(--primary-color);
+    background-color: var(--accent-color); /* クリック後はアクセントカラー（金色） */
+    color: var(--primary-color); /* 文字色はそのまま、または濃い色 */
     transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3); /* クリック後のシャドウも調整 */
 }
 
 .scroll-indicator {
@@ -361,6 +367,7 @@ body {
 .slide-item {
     flex-shrink: 0;
     width: 200
+
 
 
 
