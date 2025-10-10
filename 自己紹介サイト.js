@@ -108,20 +108,6 @@ fadeElements.forEach(element => {
     fadeObserver.observe(element);
 });
 
-// --- Goodボタン機能 ---
-// Goodボタン機能
-const likeButton = document.getElementById('like-button');
-const likeCount = document.getElementById('like-count');
-
-// 初期値
-let count = 0;
-
-likeButton.addEventListener('click', () => {
-    count += 1;
-    likeCount.textContent = count;
-});
-
-
 
 // ========================================
 // Contact Form
@@ -241,8 +227,23 @@ if (sliderTrack) {
     });
 }
 
+// ========================================
+// Good Button
+// ========================================
+const likeButton = document.getElementById('like-button');
+const likeCount = document.getElementById('like-count');
+
+if (likeButton && likeCount) {
+    let count = 0;
+    likeButton.addEventListener('click', () => {
+        count++;
+        likeCount.textContent = count;
+    });
+}
+
 console.log('🚀 Website loaded successfully!');
 console.log('👨‍💼 Takashi Goto Portfolio');
 console.log('🌐 Bridging Cultures, Delivering Value');
+
 
 
