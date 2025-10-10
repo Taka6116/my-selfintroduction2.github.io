@@ -231,19 +231,18 @@ if (sliderTrack) {
 // Good Button
 // ========================================
 const likeButton = document.getElementById('like-button');
-const likeCount = document.getElementById('like-count');
 
-if (likeButton && likeCount) {
-    let count = 0;
+if (likeButton) {
     likeButton.addEventListener('click', () => {
-        count++;
-        likeCount.textContent = count;
+        // clicked クラスをトグル（追加/削除を切り替え）
+        likeButton.classList.toggle('clicked');
     });
 }
 
 console.log('🚀 Website loaded successfully!');
 console.log('👨‍💼 Takashi Goto Portfolio');
 console.log('🌐 Bridging Cultures, Delivering Value');
+
 
 
 
