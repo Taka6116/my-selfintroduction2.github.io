@@ -1,3 +1,38 @@
+
+
+/* ========================================
+   Section Styles
+   ======================================== */
+.section {
+    padding: 6rem 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.section-title {
+    font-size: 3rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 4rem;
+    color: var(--primary-color);
+    position: relative;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+    border-radius: 2px;
+}
+
+
 /* ========================================
    Reset & Base Styles
    ======================================== */
@@ -367,6 +402,7 @@ body {
 .slide-item {
     flex-shrink: 0;
     width: 200
+
 
 
 
