@@ -263,6 +263,7 @@ body {
     box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
     font-family: 'Montserrat', sans-serif;
     letter-spacing: 1px;
+    text-align: center; 
 }
 
 .btn-primary:hover {
@@ -591,6 +592,7 @@ body {
         padding: 0.7rem 1rem;
     }
 }
+
 
 
 
