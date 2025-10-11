@@ -336,6 +336,8 @@ body {
     left: 50%;
     transform: translateX(-50%);
     animation: bounce 2s infinite;
+    /*非表示にする */
+    display: none; 
 }
 
 .mouse {
@@ -589,5 +591,6 @@ body {
         padding: 0.7rem 1rem;
     }
 }
+
 
 
