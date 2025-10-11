@@ -514,4 +514,59 @@ body {
     }
 }
 
+/* ========================================
+   Fixed Buttons (画面下部に固定表示)
+   ======================================== */
+.fixed-hero-buttons {
+    /* 画面に固定 */
+    position: fixed;
+    /* 画面の最下部から少し上に配置 */
+    bottom: 20px; 
+    /* 左右中央揃え */
+    left: 50%;
+    transform: translateX(-50%);
+    /* 他のコンテンツの上に表示（ナビゲーションより低い z-index: 900） */
+    z-index: 900; 
+    /* ボタンのレイアウト（横並び） */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    /* モバイルでの見栄えを考慮し、最大幅を設定 */
+    max-width: 90%; 
+}
+
+/* 固定ボタンのサイズ調整 */
+.fixed-btn {
+    padding: 0.8rem 2rem;
+    font-size: 0.95rem;
+}
+
+
+/* ========================================
+   Responsive Design for Fixed Buttons
+   ======================================== */
+@media (max-width: 768px) {
+    /* モバイルでの調整 */
+    .fixed-hero-buttons {
+        /* スマートフォンなど画面が狭い場合、画面下いっぱいに表示 */
+        width: 100%;
+        bottom: 0;
+        left: 0;
+        transform: none; /* 中央揃えを解除 */
+        padding: 10px 15px;
+        /* 背景色を追加して、下のコンテンツと区別しやすくする */
+        background-color: rgba(26, 35, 50, 0.9); /* primary-colorの半透明 */
+        box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1);
+        gap: 0.5rem; /* スペースを少し狭くする */
+    }
+    
+    .fixed-hero-buttons a,
+    .fixed-hero-buttons button {
+        flex: 1; /* ボタンを横幅いっぱいに広げる */
+        text-align: center;
+        padding: 0.7rem 1rem;
+    }
+}
+
 
