@@ -382,9 +382,44 @@ const observer = new IntersectionObserver((entries) => {
 
 timelineItems.forEach(item => observer.observe(item));
     </script>
+    <script>
+  (function() {
+    let scrolled = false;
+    let stayed = false;
+
+    // スクロール完了を検知（25%以上など）
+    window.addEventListener('scroll', function() {
+      const scrollPercent = (window.scrollY + window.innerHeight) / document.body.scrollHeight * 100;
+      if (scrollPercent >= 50) { // ← ここを25や75など調整
+        scrolled = true;
+        checkConditions();
+      }
+    });
+
+    // 滞在時間10秒を検知
+    setTimeout(function() {
+      stayed = true;
+      checkConditions();
+    }, 10000);
+
+    // 両方満たしたら dataLayer にイベント送信
+    function checkConditions() {
+      if (scrolled && stayed) {
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+          event: 'scroll_and_stay',
+          scrollPercent: '50',
+          stayTime: '10s'
+        });
+      }
+    }
+  })();
+</script>
+
 </body>
 </html>
 ```
+
 
 
 
