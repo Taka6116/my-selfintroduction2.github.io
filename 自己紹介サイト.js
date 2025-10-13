@@ -72,19 +72,21 @@ sections.forEach(section => {
 // Smooth Scroll
 // ========================================
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        
-        if (target) {
-            const offsetTop = target.offsetTop - 70; // 70pxはナビゲーションバーの高さ
-            window.scrollTo({
-                top: offsetTop,
-                behavior: 'smooth'
-            });
-        }
-    });
+    if (!anchor.classList.contains('like-btn')) { // likeボタンは除外
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                const offsetTop = target.offsetTop - 70;
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    }
 });
+
 
 // ========================================
 // Fade In Animation on Scroll
@@ -316,6 +318,7 @@ window.addEventListener('load', () => {
 console.log('🚀 Website loaded successfully!');
 console.log('👨‍💼 Takashi Goto Portfolio');
 console.log('🌐 Bridging Cultures, Delivering Value');
+
 
 
 
