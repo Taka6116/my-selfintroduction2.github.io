@@ -315,9 +315,24 @@ window.addEventListener('load', () => {
     console.log('🔄 Like button after window load:', likeButtonAgain);
 });
 
+// ========================================
+// データレイヤー用
+// ========================================
+document.getElementById('like-button').addEventListener('click', function() {
+    // ボタンがクリックされたときにこの関数が実行されます
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+        'event': 'custom_button_click', // GTMで使うカスタムイベント名
+        'button_name': 'Like Button', 
+        'button_id': this.id, // クリックされた要素のID（like-button）を動的に取得
+        'button_location': 'Portfolio Item' // 任意の情報
+    });
+});
+
 console.log('🚀 Website loaded successfully!');
 console.log('👨‍💼 Takashi Goto Portfolio');
 console.log('🌐 Bridging Cultures, Delivering Value');
+
 
 
 
