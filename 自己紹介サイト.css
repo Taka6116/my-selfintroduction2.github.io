@@ -583,6 +583,17 @@ body {
         box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1);
         gap: 0.5rem;
     }
+     /* ========================================
+       Floating Images Section
+       ======================================== */
+    .floating-images-section {
+        position: relative;
+        min-height: 100vh;
+        padding: 6rem 2rem;
+        overflow: hidden;
+        background: linear-gradient(180deg, #4FB3D4 0%, #67C9E6 100%);
+    }
+    
     
     .fixed-hero-buttons a,
     .fixed-hero-buttons button {
@@ -592,6 +603,7 @@ body {
         padding: 0.7rem 1rem;
     }
 }
+
 
 
 
