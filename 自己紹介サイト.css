@@ -857,4 +857,14 @@ body {
         }
     }
 
+/* 趣味・興味のタイトルを白く中央配置 */
+.about-hobby h1 {
+    color: #ffffff;
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 3rem;
+}
+
+
 
