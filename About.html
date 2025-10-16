@@ -15,87 +15,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-K3ZG8RBS');</script>
 <!-- End Google Tag Manager -->
 
-    <style>
-        /* ================= Reset & Base ================= */
-        * { margin:0; padding:0; box-sizing:border-box; }
-        :root {
-            --primary-color: #1a2332;
-            --secondary-color: #2c7a7b;
-            --accent-color: #d4af37;
-            --bg-light: #f7fafc;
-            --bg-white: #ffffff;
-            --text-dark: #2d3748;
-            --text-light: #718096;
-            --border-color: #e2e8f0;
-            --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
-            --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
-            --shadow-lg: 0 10px 25px rgba(0,0,0,0.15);
-            --transition: all 0.3s ease;
-        }
-        html { scroll-behavior: smooth; font-size:16px; }
-        body { font-family:'Noto Sans JP','Montserrat',sans-serif; color:var(--text-dark); line-height:1.7; background-color:var(--bg-light); }
-        .container { max-width:1200px; margin:0 auto; padding:0 2rem; }
-
-        /* ================= Navigation ================= */
-        .navbar { position: fixed; top:0; left:0; right:0; background-color: rgba(26, 35, 50, 0.95); backdrop-filter: blur(10px); z-index:1000; padding:1rem 0; box-shadow: var(--shadow-sm); }
-        .navbar .container { display:flex; justify-content:space-between; align-items:center; }
-        .nav-brand { font-size:1.5rem; font-weight:700; color:var(--accent-color); letter-spacing:2px; }
-        .nav-menu { display:flex; list-style:none; gap:2rem; }
-        .nav-link { color:#fff; text-decoration:none; font-weight:500; font-size:0.95rem; position:relative; transition:var(--transition); padding:0.5rem 0; }
-        .nav-link::after { content:''; position:absolute; bottom:0; left:0; width:0; height:2px; background-color:var(--accent-color); transition:width 0.3s ease; }
-        .nav-link:hover::after, .nav-link.active::after { width:100%; }
-        .nav-link:hover, .nav-link.active { color:var(--accent-color); }
-        .hamburger { display:none; flex-direction:column; cursor:pointer; gap:5px; }
-        .hamburger span { width:25px; height:3px; background-color:#fff; transition:var(--transition); }
-
-        /* ================= About Section ================= */
-        /* min-heightを調整し、padding-topをnavbarの高さ+αに設定してコンテンツが隠れないように修正 */
-        .section { padding:8rem 0 6rem; min-height:calc(100vh - 2rem); display:flex; align-items:center; }
-        .section-title { font-size:3rem; font-weight:700; text-align:center; margin-bottom:4rem; color:var(--primary-color); position:relative; font-family:'Montserrat',sans-serif; }
-        .section-title::after { content:''; position:absolute; bottom:-15px; left:50%; transform:translateX(-50%); width:80px; height:4px; background:linear-gradient(90deg,var(--secondary-color),var(--accent-color)); border-radius:2px; }
-
-        .about-section { background-color: var(--bg-white); }
-        .about-content { display:flex; flex-direction:column; gap:3rem; }
-        .about-card { background: linear-gradient(135deg,var(--primary-color),var(--secondary-color)); padding:2.5rem; border-radius:20px; box-shadow:var(--shadow-lg); color:#fff; }
-        .about-info { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:1.5rem; }
-        .info-item { display:flex; flex-direction:column; gap:0.5rem; }
-        .info-label { font-size:0.9rem; color:var(--accent-color); font-weight:600; text-transform:uppercase; letter-spacing:1px; }
-        .info-value { font-size:1.2rem; font-weight:500; }
-
-        .about-story { background-color: var(--bg-light); padding:2.5rem; border-radius:20px; border-left:4px solid var(--accent-color); }
-        .subsection-title { font-size:1.8rem; font-weight:600; margin-bottom:1.5rem; color:var(--primary-color); }
-        .story-text { margin-bottom:1.5rem; color:var(--text-dark); line-height:1.9; }
-        .story-text:last-child { margin-bottom:0; }
-
-        .skills-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:2rem; }
-        .skill-card { background-color:var(--bg-white); padding:2rem; border-radius:15px; box-shadow:var(--shadow-md); transition:var(--transition); border-top:3px solid var(--accent-color); }
-        .skill-card:hover { transform:translateY(-10px); box-shadow:var(--shadow-lg); }
-        .skill-icon { font-size:3rem; margin-bottom:1rem; }
-        .skill-title { font-size:1.4rem; font-weight:600; margin-bottom:1rem; color:var(--primary-color); }
-        .skill-description { color:var(--text-light); line-height:1.7; }
-
-        /* ================= Animations ================= */
-        @keyframes fadeInUp { from {opacity:0; transform:translateY(30px);} to {opacity:1; transform:translateY(0);} }
-        /* 初期状態を非表示に設定 */
-        .fade-in-up { opacity:0; transform:translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
-        /* visibleクラスが付与されたら表示 */
-        .fade-in-up.visible { opacity:1; transform:translateY(0); }
-
-        /* ================= Responsive ================= */
-        @media(max-width:768px){
-            .container { padding:0 1.5rem; }
-            .nav-menu { position:fixed; left:-100%; top:70px; flex-direction:column; background-color:var(--primary-color); width:100%; text-align:center; transition:0.3s; padding:2rem 0; }
-            .nav-menu.active { left:0; }
-            .hamburger { display:flex; }
-            .hamburger.active span:nth-child(1){ transform:rotate(45deg) translate(8px,8px); }
-            .hamburger.active span:nth-child(2){ opacity:0; }
-            .hamburger.active span:nth-child(3){ transform:rotate(-45deg) translate(7px,-7px); }
-            .skills-grid { grid-template-columns:1fr; }
-            .about-info { grid-template-columns:1fr; }
-            /* スマホでのコンテンツ上部の余白を調整 */
-            .section { padding-top: 6rem; }
-        }
-    </style>
+    
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-5QV8TKR67C"></script> 
     <script> 
@@ -348,3 +268,4 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </body>
 
 </html>
+
