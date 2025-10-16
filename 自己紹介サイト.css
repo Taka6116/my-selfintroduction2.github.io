@@ -858,13 +858,21 @@ body {
     }
 
 /* 趣味・興味のタイトルを白く中央配置 */
+/* 趣味・興味セクションのスタイル */
+.about-hobby {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    /* または単色なら: background-color: var(--primary-color); */
+}
+
 .about-hobby h1 {
     color: #ffffff;
     text-align: center;
     font-size: 3rem;
     font-weight: 700;
     margin-bottom: 3rem;
+    font-family: 'Montserrat', sans-serif;
 }
+
 
 
 
