@@ -594,7 +594,195 @@ body {
     }
 }
 
+<style>
+    /* ========== 全体ベース設定 ========== */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: #333;
+        min-height: 100vh;
+    }
+
+    /* ========== Hobbyセクション全体 ========== */
+    .section.about-hobby {
+        padding: 80px 20px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: #fff;
+    }
+
+    .about-hobby .container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .about-hobby h1 {
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 50px;
+        color: #fff;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    /* ========== Hobbyカードレイアウト ========== */
+    .hobbies-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+        margin-bottom: 50px;
+    }
+
+    .hobby-card {
+        background: #fff;
+        border-radius: 15px;
+        padding: 30px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        position: relative;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        overflow: hidden;
+        color: #333;
+    }
+
+    .hobby-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background: linear-gradient(90deg, var(--card-color), var(--card-color-light));
+    }
+
+    .hobby-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    }
+
+    /* カードごとのカラー変数 */
+    .hobby-card.soccer {
+        --card-color: #4CAF50;
+        --card-color-light: #81C784;
+    }
+
+    .hobby-card.reading {
+        --card-color: #2196F3;
+        --card-color-light: #64B5F6;
+    }
+
+    .hobby-card.training {
+        --card-color: #FF5722;
+        --card-color-light: #FF8A65;
+    }
+
+    .hobby-card.manga {
+        --card-color: #9C27B0;
+        --card-color-light: #BA68C8;
+    }
+
+    .hobby-icon {
+        font-size: 3rem;
+        margin-bottom: 15px;
+    }
+
+    .hobby-title {
+        font-size: 1.8rem;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    .hobby-details {
+        list-style: none;
+    }
+
+    .hobby-details li {
+        padding: 10px 0;
+        border-bottom: 1px solid #eee;
+        font-size: 0.95rem;
+        display: flex;
+        align-items: center;
+        color: #555;
+    }
+
+    .hobby-details li:last-child {
+        border-bottom: none;
+    }
+
+    .hobby-details li::before {
+        content: '▸';
+        color: var(--card-color);
+        font-weight: bold;
+        margin-right: 10px;
+        font-size: 1.2rem;
+    }
+
+    /* ========== タグセクション ========== */
+    .tags-section {
+        background: #fff;
+        border-radius: 15px;
+        padding: 30px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        text-align: center;
+    }
+
+    .tags-title {
+        font-size: 1.6rem;
+        color: #333;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    .tags-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .tag {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 25px;
+        font-size: 0.9rem;
+        font-weight: 500;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        cursor: default;
+    }
+
+    .tag:hover {
+        transform: scale(1.05);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    /* ========== レスポンシブ対応 ========== */
+    @media (max-width: 768px) {
+        .about-hobby h1 {
+            font-size: 2rem;
+        }
+
+        .hobby-card {
+            padding: 25px;
+        }
+
+        .hobby-title {
+            font-size: 1.5rem;
+        }
+
+        .hobbies-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .tags-title {
+            font-size: 1.3rem;
+        }
+    }
+</style>
 
 
 
