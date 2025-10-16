@@ -1,1 +1,777 @@
 
+
+
+
+/* ========================================
+   Section Styles
+   ======================================== */
+.section {
+    padding: 6rem 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.section-title {
+    font-size: 3rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 4rem;
+    color: var(--primary-color);
+    position: relative;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+    border-radius: 2px;
+}
+
+
+/* ========================================
+   Reset & Base Styles
+   ======================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #1a2332;
+    --secondary-color: #2c7a7b;
+    --accent-color: #d4af37;
+    --bg-light: #f7fafc;
+    --bg-white: #ffffff;
+    --text-dark: #2d3748;
+    --text-light: #718096;
+    --border-color: #e2e8f0;
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
+    --transition: all 0.3s ease;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: 'Noto Sans JP', 'Montserrat', sans-serif;
+    color: var(--text-dark);
+    line-height: 1.7;
+    overflow-x: hidden;
+    background-color: var(--bg-light);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* ========================================
+   Navigation
+   ======================================== */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(26, 35, 50, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    padding: 1rem 0;
+    transition: var(--transition);
+    box-shadow: var(--shadow-sm);
+}
+
+.navbar.scrolled {
+    padding: 0.5rem 0;
+    box-shadow: var(--shadow-md);
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-brand {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 2px;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-link {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    position: relative;
+    transition: var(--transition);
+    padding: 0.5rem 0;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--accent-color);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--accent-color);
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background-color: #ffffff;
+    transition: var(--transition);
+}
+
+/* ========================================
+   Hero Section
+   ======================================== */
+.hero-section {
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    overflow: hidden;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(44, 122, 123, 0.15) 0%, transparent 50%);
+    animation: pulse 15s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.8; }
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    color: #ffffff;
+    padding: 2rem;
+}
+
+.hero-subtitle {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+    animation: fadeInDown 1s ease;
+}
+
+/* Profile Photo Styles */
+.profile-photo {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid var(--accent-color);
+    box-shadow: 0 8px 30px rgba(212, 175, 55, 0.4);
+    margin: 2rem auto 2rem;
+    display: block;
+    animation: fadeInUp 1s ease 0.3s both;
+}
+
+.hero-title {
+    font-size: 4rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    animation: fadeInUp 1s ease 0.5s both;
+    letter-spacing: 2px;
+}
+
+.hero-name-en {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2rem;
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+    animation: fadeInUp 1s ease 0.7s both;
+    letter-spacing: 5px;
+}
+
+.hero-description {
+    font-size: 1.3rem;
+    margin-bottom: 2.5rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    animation: fadeInUp 1s ease 0.9s both;
+    line-height: 1.8;
+}
+
+.btn-primary {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 50px;
+    transition: var(--transition);
+    animation: fadeInUp 1s ease 1.1s both;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 1px;
+    text-align: center; 
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+    background-color: #e5c04a;
+}
+
+/* ========================================
+   Hero Section Buttons
+   ======================================== */
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2.5rem;
+    animation: fadeInUp 1s ease 1.1s both;
+}
+
+.btn-primary {
+    animation: none; /* 個別のボタンのアニメーションは不要に */
+}
+
+
+
+.like-btn {
+    display: inline-block; /* インライン要素をブロック要素として扱えるようにする */
+    padding: 1rem 2.5rem;
+    background-color: var(--bg-white); /* 背景を白に変更 */
+    color: var(--primary-color); /* 文字色を濃い色に変更 */
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 50px;
+    transition: var(--transition);
+    /* アニメーション関連のプロパティは削除または調整 */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* シャドウを調整 */
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 1px;
+    
+    /* 以前のlike-btnの残りの設定 */
+    border: none; /* ボーダーを削除 */
+    cursor: pointer;
+    font-size: 1rem;
+    /* 💥💥 ここを追加 💥💥 */
+    position: relative; 
+    overflow: hidden; /* ハートがボタンの境界を超えて飛び出すのを許可しない場合は追加 */
+    z-index: 10; /* ボタンのテキストと背景をハートより手前に表示 */
+}
+
+.like-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2); /* ホバー時のシャドウを調整 */
+    background-color: var(--bg-light); /* ホバー時の背景色を少し変える */
+}
+
+/* クリック後の状態 */
+.like-btn.clicked {
+    background-color: var(--accent-color); /* クリック後はアクセントカラー（金色） */
+    color: var(--primary-color); /* 文字色はそのまま、または濃い色 */
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3); /* クリック後のシャドウも調整 */
+     z-index: 10; /* 念のため z-index を保持 */
+      /* 短時間の振動エフェクトを追加 */
+    animation: button-shake 0.3s ease-in-out;
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: bounce 2s infinite;
+    /*非表示にする */
+    display: none; 
+}
+
+.mouse {
+    width: 30px;
+    height: 50px;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 15px;
+    position: relative;
+}
+
+.mouse::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 10px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 2px;
+    animation: scroll 2s infinite;
+}
+
+@keyframes scroll {
+    0% { opacity: 1; transform: translateX(-50%) translateY(0); }
+    100% { opacity: 0; transform: translateX(-50%) translateY(15px); }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+    40% { transform: translateX(-50%) translateY(-10px); }
+    60% { transform: translateX(-50%) translateY(-5px); }
+}
+
+/* ========================================
+   Image Slider Section
+   ======================================== */
+.image-slider-section {
+    background-color: var(--primary-color);
+    padding: 4rem 0;
+    overflow: hidden;
+}
+
+.slider-title {
+    text-align: center;
+    color: var(--accent-color);
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 2px;
+}
+
+.slider-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.slider-track {
+    display: flex;
+    animation: slideLeft 30s linear infinite;
+    width: fit-content;
+    font-size: 0; 
+}
+
+.slider-track:hover {
+    animation-play-state: paused;
+}
+
+.slide-item {
+    flex-shrink: 0;
+    width: 200px;
+    height: 200px;
+    margin: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--bg-white);
+    border-radius: 15px;
+    padding: 1rem;
+    box-shadow: var(--shadow-md);
+    transition: var(--transition);
+}
+
+.slide-item:hover {
+    transform: scale(1.1);
+    box-shadow: var(--shadow-lg);
+}
+
+.slide-item img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+@keyframes slideLeft {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* ========================================
+   Good Button Effect (Heart Burst)
+   ======================================== */
+
+/* ハートの基本スタイル */
+.like-btn::after {
+    content: '❤️'; /* 表示する絵文字 (ハート) */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+    font-size: 2rem; /* サイズ調整 */
+    pointer-events: none; /* クリックイベントを邪魔しないようにする */
+    z-index: 15; /* 他の要素より前面に表示 */
+}
+
+/* クリック時 (clickedクラス追加時) に実行されるアニメーション */
+.like-btn.clicked::after {
+    animation: heart-burst 0.7s ease-out forwards;
+}
+
+/* ハートが飛び出し、消えるアニメーションのキーフレーム */
+/* ハートが飛び出すアニメーション */
+@keyframes heart-burst {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0);
+        top: 50%;
+    }
+    30% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.2);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -150%) scale(0.5);
+        top: 0;
+    }
+}
+
+/* さらなる視覚的強化：パルス効果 */
+.like-btn.clicked {
+    position: relative;
+}
+
+.like-btn.clicked::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    background-color: var(--accent-color);
+    border-radius: 50px;
+    opacity: 0.3;
+    animation: pulse-ring 0.6s ease-out;
+    z-index: -1;
+}
+
+@keyframes pulse-ring {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.3;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1.3);
+        opacity: 0;
+    }
+}
+
+/* ========================================
+   Fixed Buttons (画面下部に固定表示)
+   ======================================== */
+.fixed-hero-buttons {
+    /* PCのデフォルト設定を維持 */
+    position: fixed;
+    bottom: 20px; 
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 900; 
+    display: flex;
+    justify-content: center; /* 中央に寄せるための設定 */
+    align-items: center;
+    gap: 1rem;
+    max-width: 90%; 
+}
+
+/* 固定ボタンのサイズ調整 */
+.fixed-btn {
+    padding: 0.8rem 2rem;
+    font-size: 0.95rem;
+}
+
+
+/* ========================================
+   Responsive Design for Fixed Buttons
+   ======================================== */
+@media (max-width: 768px) {
+    /* 768px以下では、画面に対して左右中央に配置する */
+    .fixed-hero-buttons {
+        /* 横幅を制限して、中央に浮かせる */
+        width: 90%; 
+        max-width: 450px; /* ★ 最大幅を設けてスマホで大きくなりすぎないように */
+        
+        bottom: 20px; /* 下から浮かせた状態を維持 */
+        left: 50%;
+        transform: translateX(-50%); /* ★ これで常に画面中央に固定されます */
+        
+        padding: 10px; 
+        background-color: transparent; 
+        box-shadow: none; 
+        gap: 1rem; 
+    }
+    
+    .fixed-hero-buttons a,
+    .fixed-hero-buttons button {
+        /* ボタンの横幅を固定して、中央寄せを強調 */
+        flex: 0 1 auto; 
+        min-width: 130px; /* ★ ボタンの最小幅を指定して、形を保つ */
+        padding: 0.7rem 1.2rem;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    /* 画面がさらに狭い場合（480px以下） */
+    .fixed-hero-buttons {
+        width: 100%;
+        bottom: 0; /* 画面下端に固定 */
+        left: 0;
+        transform: none; 
+        padding: 10px 15px; 
+        background-color: rgba(26, 35, 50, 0.9);
+        box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1);
+        gap: 0.5rem;
+    }
+    
+    
+    .fixed-hero-buttons a,
+    .fixed-hero-buttons button {
+        /* 狭い画面では横幅いっぱいに広げ、左右均等に配置 */
+        flex: 1; /* ★ これで残りのスペースを均等に埋め、横幅いっぱいになります */
+        min-width: auto; /* 最小幅をリセット */
+        padding: 0.7rem 1rem;
+    }
+}
+
+<style>
+    /* ========== 全体ベース設定 ========== */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: #333;
+        min-height: 100vh;
+    }
+
+    /* ========== Hobbyセクション全体 ========== */
+  /* ===================== 趣味カード ===================== */
+.hobbies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-bottom: 50px;
+}
+
+.hobby-card {
+  background: #fff;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  color: #333;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.hobby-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  background: linear-gradient(90deg, var(--card-color), var(--card-color-light));
+}
+
+.hobby-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+}
+
+/* カード色（HTMLのクラスに対応） */
+.hobby-card.soccer {
+  --card-color: #4CAF50;
+  --card-color-light: #81C784;
+}
+
+.hobby-card.reading {
+  --card-color: #2196F3;
+  --card-color-light: #64B5F6;
+}
+
+.hobby-card.training {
+  --card-color: #FF5722;
+  --card-color-light: #FF8A65;
+}
+
+.hobby-card.manga {
+  --card-color: #9C27B0;
+  --card-color-light: #BA68C8;
+}
+
+/* アイコン・タイトル・リスト */
+.hobby-icon {
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+
+.hobby-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.hobby-details {
+  list-style: none;
+}
+
+.hobby-details li {
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+  color: #555;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+}
+
+.hobby-details li:last-child {
+  border-bottom: none;
+}
+
+.hobby-details li::before {
+  content: '▸';
+  color: var(--card-color);
+  font-weight: bold;
+  margin-right: 10px;
+  font-size: 1.2rem;
+}
+
+/* ===================== タグセクション ===================== */
+.tags-section {
+  background: #fff;
+  border-radius: 15px;
+  padding: 40px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  color: #333;
+}
+
+.tags-title {
+  font-size: 1.6rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 25px;
+  color: #444;
+}
+
+.tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+
+.tag {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: default;
+}
+
+.tag:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+
+    /* ========== レスポンシブ対応 ========== */
+    @media (max-width: 768px) {
+        .about-hobby h1 {
+            font-size: 2rem;
+        }
+
+        .hobby-card {
+            padding: 25px;
+        }
+
+        .hobby-title {
+            font-size: 1.5rem;
+        }
+
+        .hobbies-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .tags-title {
+            font-size: 1.3rem;
+        }
+    }
+</style>
+
+
+
+
+
+
