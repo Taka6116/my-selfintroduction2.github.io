@@ -700,15 +700,6 @@ body {
     /* ========== Hobbyセクション全体 ========== */
   /* ===================== 趣味カード ===================== */
 
-/* <h1>趣味・興味</h1> のスタイル */
-.about-hobby h1 {
-    font-size: 3rem;
-    font-weight: 700;
-    text-align: center; /* 水平中央配置 */
-    margin-bottom: 4rem;
-    color: #ffffff; /* 白いテキストカラー */
-    position: relative;
-}
 
 .hobbies-grid {
   display: grid;
@@ -865,4 +856,5 @@ body {
             font-size: 1.3rem;
         }
     }
+
 
