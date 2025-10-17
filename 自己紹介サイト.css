@@ -604,12 +604,13 @@ body {
         box-sizing: border-box;
     }
 
-    body {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        color: #333;
-        min-height: 100vh;
-    }
+   body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); */ /* この行をコメントアウトまたは削除 */
+    color: #333;
+    min-height: 100vh;
+}
+
 
 /* ========================================
    about section
@@ -872,6 +873,7 @@ body {
     margin-bottom: 3rem;
     font-family: 'Montserrat', sans-serif;
 }
+
 
 
 
